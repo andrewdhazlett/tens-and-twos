@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 // yuck
 const getShuffledDeck = () => {
   function shuffle(a) {

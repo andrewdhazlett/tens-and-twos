@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 import {gsap} from 'gsap';
 import {getViewport} from '../utils';
 

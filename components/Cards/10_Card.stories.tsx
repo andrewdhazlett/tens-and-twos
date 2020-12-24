@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 import React from 'react';
 import {DealSomeCards, PickACard, Overlay} from '.';
 

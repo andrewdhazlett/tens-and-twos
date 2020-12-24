@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 import React from 'react';
 const IconClub = props => {
   const {color} = props;

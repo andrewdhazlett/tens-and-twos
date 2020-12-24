@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 // eslint-disable-next-line node/no-unpublished-import
 import {storiesOf} from '@storybook/react';
 import Button from './Button';

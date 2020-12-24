@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 import React, {SetStateAction, useEffect} from 'react';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import {muiTheme} from '../../MaterialUI/theme';

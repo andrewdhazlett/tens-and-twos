@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 import React from 'react';
 const Github = props => {
   const {color} = props;

@@ -13,7 +13,6 @@
 - Add husky
 
 ### Tech Debt
-- Enable `noImplicitAny`
 - Migrate `Cards` components to use `typedeck`
 - Clean out existing poker cruft
 - Clean up `eslint` warnings

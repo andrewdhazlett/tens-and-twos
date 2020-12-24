@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 const getViewport = () => {
   const vw = Math.max(
     document.documentElement.clientWidth,

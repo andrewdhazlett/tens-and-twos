@@ -1,3 +1,4 @@
+// @ts-nocheck noImplicitAny
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {Button, Divider, IconButton, Icon, Typography} from '@material-ui/core';
