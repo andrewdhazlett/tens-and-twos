@@ -1,3 +1,4 @@
+import * as React from "react";
 import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
@@ -38,11 +39,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id as string)
-  return {
+export const getStaticProps: GetStaticProps = async ({ params }) => (
+  {
     props: {
-      postData
+      postData: await getPostData(
+        (
+          Array.isArray(params?.id) 
+            ? params?.id[0]
+            : params?.id
+        ) ?? ''
+      )
     }
   }
-}
+)
