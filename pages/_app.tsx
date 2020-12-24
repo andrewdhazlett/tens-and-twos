@@ -1,7 +1,7 @@
-import * as React from "react";
-import '../styles/global.scss'
-import { AppProps } from 'next/app'
+import * as React from 'react';
+import '../styles/global.scss';
+import {AppProps} from 'next/app';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+export default function App({Component, pageProps}: AppProps) {
+  return <Component {...pageProps} />;
 }

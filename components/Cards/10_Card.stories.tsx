@@ -1,14 +1,9 @@
-import React from "react";
-import { 
-	DealSomeCards,
-	PickACard,
-	Overlay,
-} from ".";
+import React from 'react';
+import {DealSomeCards, PickACard, Overlay} from '.';
 
 export default {
-  title: "React Playing Cards"
+  title: 'React Playing Cards',
 };
-
 
 export const Example_Poker_Hand = () => <DealSomeCards />;
 export const Overlay_On_Anything = () => <Overlay />;

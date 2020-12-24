@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 // Usage
 function App() {
@@ -18,7 +18,7 @@ function useWindowSize() {
   function getSize() {
     return {
       width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined
+      height: isClient ? window.innerHeight : undefined,
     };
   }
 
@@ -28,7 +28,7 @@ function useWindowSize() {
     if (!isClient) {
       return;
     }
-    
+
     function handleResize() {
       setWindowSize(getSize());
     }

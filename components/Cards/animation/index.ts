@@ -1,7 +1,4 @@
-import {flipCard} from "./flipCard"
-import {moveTo} from "./moveTo"
+import {flipCard} from './flipCard';
+import {moveTo} from './moveTo';
 
-export {
-	flipCard,
-	moveTo,
-};
+export {flipCard, moveTo};
