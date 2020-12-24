@@ -28,7 +28,6 @@
     "next": "^10.0.0",
     "react": "^16.14.0",
     "react-dom": "16.13.1",
-    "react-material-color-picker": "^1.1.2",
     "remark": "^12.0.0",
     "remark-html": "^12.0.0",
     "typedeck": "^1.5.2"

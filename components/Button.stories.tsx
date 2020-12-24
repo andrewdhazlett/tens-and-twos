@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
 // eslint-disable-next-line node/no-unpublished-import
 import {storiesOf} from '@storybook/react';
