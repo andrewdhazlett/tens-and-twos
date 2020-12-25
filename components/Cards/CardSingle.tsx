@@ -36,7 +36,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CardSingle(props) {
+export default function CardSingle(props: {
+  initialState: 'face-down' | 'turn-face-up' | 'show_face' | 'finished';
+  id: string;
+  card: {
+    id: string;
+    rank: string;
+    suit: string;
+    color: string;
+    backColor: string;
+  };
+  status?: unknown;
+}) {
   const {id, card, status} = props;
   const classes = useStyles();
   // S=Spades, D=Diamonds, H=Hearts, C=Clubs
