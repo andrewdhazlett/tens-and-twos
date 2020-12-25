@@ -35,6 +35,7 @@ const show = (card, callback) => {
 };
 
 export const flipCard = (animation, card, callback = () => {}) => {
+  if (typeof document === 'undefined') return null;
   switch (animation) {
     case 'setToShown':
       return setToShown(card, callback);

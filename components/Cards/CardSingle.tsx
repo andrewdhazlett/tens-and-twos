@@ -37,15 +37,9 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function CardSingle(props: {
-  initialState: 'face-down' | 'turn-face-up' | 'show_face' | 'finished';
+  initialState?: 'face-down' | 'turn-face-up' | 'show_face' | 'finished';
   id: string;
-  card: {
-    id: string;
-    rank: string;
-    suit: string;
-    color: string;
-    backColor: string;
-  };
+  card: Card;
   status?: unknown;
 }) {
   const {id, card} = props;

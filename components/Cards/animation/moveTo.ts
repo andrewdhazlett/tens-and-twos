@@ -1,10 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
-import {gsap} from 'gsap';
+// globals document
+import { gsap, TweenTarget } from 'gsap';
 
 const duration = 1;
 
-const initCard = (card, callback) => {
+const initCard = (card: TweenTarget, callback) => {
   gsap.set(card, {
     opacity: 1,
     scale: 0.25,
@@ -129,7 +130,12 @@ const dealFirstCard = (card, callback) => {
   });
 };
 
-export const moveTo = (animation, card, callback = () => {}) => {
+export const moveTo = (
+  animation: string,
+  card: string,
+  callback = () => { }
+) => {
+  if (typeof document === 'undefined') return null;
   switch (animation) {
     case 'makeVisible':
       return makeVisible(card, callback);

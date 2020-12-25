@@ -13,7 +13,7 @@ import {
   Typography,
   ThemeOptions,
 } from '@material-ui/core';
-import {getShuffledDeck} from './utils/';
+import {Card, getShuffledDeck} from './utils/';
 import {CardSingle} from './';
 import {flipCard, moveTo} from './animation';
 
@@ -33,14 +33,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function DealSomeCards() {
   const classes = useStyles();
-  const [shoe, setShoe] = React.useState<{pop: Function} | null>(null);
-  const [inPlay, setInPlay] = React.useState<
-    Array<{
-      id: string;
-      suit: string;
-      rank: string;
-    }>
-  >([]);
+  const [shoe, setShoe] = React.useState<Card[]>(getShuffledDeck());
+  const [inPlay, setInPlay] = React.useState<Card[]>([]);
   const [nextAction, setNextAction] = React.useState({
     key: 'dealHand',
     value: 'Deal Player Hand',
@@ -124,15 +118,19 @@ export default function DealSomeCards() {
     }, 100);
   };
 
+  const muckCard = (card: Card, i: number) => {
+    flipCard('hide', `#${card.id}-card-face`);
+    setTimeout(() => {
+      moveTo('muckCard', `#${card.id}`, () => setActionDisabled(false));
+      setTimeout(() => {
+        flipCard('show', `#${card.id}-card-back`);
+      }, 400);
+    }, 100 * i);
+  };
+
   const muckCards = () => {
     for (let i = 0; i < inPlay.length; i++) {
-      flipCard('hide', `#${inPlay[i].id}-card-face`);
-      setTimeout(() => {
-        moveTo('muckCard', `#${inPlay[i].id}`, () => setActionDisabled(false));
-        setTimeout(() => {
-          flipCard('show', `#${inPlay[i].id}-card-back`);
-        }, 400);
-      }, 100 * i);
+      muckCard(inPlay[i], i);
     }
   };
 
