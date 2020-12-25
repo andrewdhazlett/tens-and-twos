@@ -2,8 +2,7 @@
 // @ts-nocheck noImplicitAny
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {Button, Divider, IconButton, Icon, Typography} from '@material-ui/core';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import {Button, Divider, IconButton, Typography} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import SaveIcon from '@material-ui/icons/Save';

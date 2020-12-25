@@ -2,7 +2,7 @@
 // @ts-nocheck noImplicitAny
 import React from 'react';
 
-const makeGraphic = (props, svg) => {
+const makeGraphic = (props: unknown, svg: path) => {
   return (
     <React.Fragment>
       <svg {...props} viewBox="0 0 68 92">
@@ -13,11 +13,6 @@ const makeGraphic = (props, svg) => {
 };
 
 export default function Jack(props) {
-  let c = '#000';
-  let s = 'S';
-  const {color, suit} = props;
-  if (color) c = color;
-  if (suit) s = suit;
   return makeGraphic(
     props,
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

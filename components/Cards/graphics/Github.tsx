@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
 import React from 'react';
-const Github = props => {
+const Github = (props: {color: string}) => {
   const {color} = props;
   let c = '#ffffff';
   if (color) {

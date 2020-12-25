@@ -21,7 +21,6 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "@u-wave/react-vimeo": "^0.9.2",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "gsap": "^3.5.1",

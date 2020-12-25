@@ -2,7 +2,7 @@
 // @ts-nocheck noImplicitAny
 import React from 'react';
 
-const makeGraphic = (props, svg) => {
+const makeGraphic = (props: unknown, svg: path) => {
   return (
     <React.Fragment>
       <svg {...props} viewBox="0 0 512 512">

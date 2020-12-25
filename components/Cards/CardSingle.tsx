@@ -5,7 +5,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import {flipCard} from './animation';
 import {CardBack, Base, Rank, Suit} from './graphics';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   cardContainer: {
     opacity: 0,
     width: 200,
@@ -48,7 +48,7 @@ export default function CardSingle(props: {
   };
   status?: unknown;
 }) {
-  const {id, card, status} = props;
+  const {id, card} = props;
   const classes = useStyles();
   // S=Spades, D=Diamonds, H=Hearts, C=Clubs
   const [cardStatus, setCardStatus] = React.useState(props.initialState);

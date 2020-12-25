@@ -10,15 +10,12 @@ import {
   Button,
   AppBar,
   Toolbar,
-  IconButton,
   Typography,
   ThemeOptions,
 } from '@material-ui/core';
-import {CardBack, Base, Rank, Suit} from './graphics';
 import {getShuffledDeck} from './utils/';
 import {CardSingle} from './';
 import {flipCard, moveTo} from './animation';
-import Vimeo from '@u-wave/react-vimeo';
 
 const useStyles = makeStyles(theme => ({
   cards: {
@@ -56,7 +53,6 @@ export default function Overlay() {
       suit: string;
     }>
   >([]);
-  const [color, setColor] = React.useState('#212121');
   const [nextAction, setNextAction] = React.useState({
     key: 'dealHand',
     value: 'Deal Player Hand',
@@ -239,16 +235,6 @@ export default function Overlay() {
               </div>
             </React.Fragment>
           ) : null}
-
-          <Vimeo
-            className={classes.videoBase}
-            autoplay
-            video="384301846"
-            responsive
-            controls
-            loop
-            showTitle={false}
-          />
         </div>
       </MuiThemeProvider>
     </React.Fragment>

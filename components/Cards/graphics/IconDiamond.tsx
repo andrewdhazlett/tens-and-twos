@@ -1,12 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
 import React from 'react';
-const IconDiamond = props => {
-  const {color} = props;
-  let c = '#ddc73f';
-  if (color) {
-    c = color;
-  }
+const IconDiamond = (props: {color: string}) => {
   return (
     <React.Fragment>
       <svg {...props} viewBox="0 0 512 512">

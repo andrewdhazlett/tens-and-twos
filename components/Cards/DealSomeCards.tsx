@@ -10,11 +10,9 @@ import {
   Button,
   AppBar,
   Toolbar,
-  IconButton,
   Typography,
   ThemeOptions,
 } from '@material-ui/core';
-import {CardBack, Base, Rank, Suit} from './graphics';
 import {getShuffledDeck} from './utils/';
 import {CardSingle} from './';
 import {flipCard, moveTo} from './animation';
@@ -43,7 +41,6 @@ export default function DealSomeCards() {
       rank: string;
     }>
   >([]);
-  const [color, setColor] = React.useState('#212121');
   const [nextAction, setNextAction] = React.useState({
     key: 'dealHand',
     value: 'Deal Player Hand',

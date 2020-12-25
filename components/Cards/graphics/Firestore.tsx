@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
 import React from 'react';
-const Firestore = props => {
+const Firestore = (props: unknown) => {
   return (
     <React.Fragment>
       <svg {...props} viewBox="0 0 129 176">

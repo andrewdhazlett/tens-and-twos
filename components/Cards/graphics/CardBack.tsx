@@ -2,7 +2,7 @@
 // @ts-nocheck noImplicitAny
 import React from 'react';
 
-const makeGraphic = (props, svg) => {
+const makeGraphic = (props: unknown, svg: path) => {
   return (
     <div id={props.id}>
       <svg {...props} viewBox="0 0 181 251">

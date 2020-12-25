@@ -2,7 +2,7 @@
 // @ts-nocheck noImplicitAny
 import React from 'react';
 
-const makeGraphic = (props, svg) => {
+const makeGraphic = (props: unknown, svg: path) => {
   return (
     <React.Fragment>
       <svg {...props} viewBox="0 0 181 251">
@@ -12,7 +12,7 @@ const makeGraphic = (props, svg) => {
   );
 };
 
-export default function Base(props) {
+export default function Base(props: {color: string}) {
   let c = 'black';
   const {color} = props;
   if (color) c = color;

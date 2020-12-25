@@ -7,7 +7,7 @@ import {
   Rank as RankSymbol,
 } from '../components/Cards/graphics';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   maxIconSize: {
     maxHeight: 100,
     maxWidth: 100,

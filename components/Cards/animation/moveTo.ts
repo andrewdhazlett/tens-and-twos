@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
 import {gsap} from 'gsap';
-import {getViewport} from '../utils';
 
 const duration = 1;
 
@@ -12,6 +11,7 @@ const initCard = (card, callback) => {
     rotation: -30,
     x: -100,
     y: -150,
+    onComplete: callback,
   });
 };
 
@@ -33,6 +33,7 @@ const dealRiverFirst = (card, callback) => {
     x: 155,
     y: -75,
     scale: 0.33,
+    onComplete: callback,
   });
 };
 
@@ -65,6 +66,7 @@ const dealFlopSecond = (card, callback) => {
     x: 15,
     y: -75,
     scale: 0.33,
+    onComplete: callback,
   });
 };
 
@@ -75,12 +77,14 @@ const dealFlopFirst = (card, callback) => {
     x: -55,
     y: -75,
     scale: 0.33,
+    onComplete: callback,
   });
 };
 
 const makeVisible = (card, callback) => {
   gsap.set(card, {
     opacity: 1,
+    onComplete: callback,
   });
 };
 
@@ -91,6 +95,7 @@ const dealFirst = (card, callback) => {
     x: -10,
     y: 110,
     scale: 0.8,
+    onComplete: callback,
   });
 };
 
@@ -110,6 +115,7 @@ const placeInDeck = (card, callback) => {
     scale: 0.25,
     x: -75,
     y: -100,
+    onComplete: callback,
   });
 };
 

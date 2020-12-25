@@ -1,6 +1,8 @@
-import {useState, useEffect} from 'react';
+export {};
+// import {useState, useEffect} from 'react';
 
 // Usage
+/*
 function App() {
   const size = useWindowSize();
 
@@ -10,8 +12,10 @@ function App() {
     </div>
   );
 }
+*/
 
 // Hook
+/*
 function useWindowSize() {
   const isClient = typeof window === 'object';
 
@@ -39,3 +43,4 @@ function useWindowSize() {
 
   return windowSize;
 }
+*/
