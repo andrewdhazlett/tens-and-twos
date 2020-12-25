@@ -10,8 +10,9 @@ import utilStyles from '../../styles/utils.module.css';
 import {muiTheme} from '../../MaterialUI/theme';
 import Layout from '@components/layout';
 import Date from '@components/date';
-import {CardSingle} from '@components/Cards';
-import {flipCard, moveTo} from '@components/Cards/animation';
+import CardSingle from '@components/Cards/CardSingle';
+import {flipCard} from '@components/Cards/animation/flipCard';
+import {moveTo} from '@components/Cards/animation/moveTo';
 
 const useStyles = makeStyles(theme => ({
   table: {

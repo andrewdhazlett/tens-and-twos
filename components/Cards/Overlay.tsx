@@ -15,7 +15,8 @@ import {
 } from '@material-ui/core';
 import {getShuffledDeck} from './utils/';
 import {CardSingle} from './';
-import {flipCard, moveTo} from './animation';
+import {flipCard} from './animation/flipCard';
+import {moveTo} from './animation/moveTo';
 
 const useStyles = makeStyles(theme => ({
   cards: {

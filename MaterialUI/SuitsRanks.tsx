@@ -2,10 +2,8 @@
 // @ts-nocheck noImplicitAny
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {
-  Suit as SuitSymbol,
-  Rank as RankSymbol,
-} from '../components/Cards/graphics';
+import {Suit as SuitSymbol} from '../components/Cards/graphics/Suit';
+import {Rank as RankSymbol} from '../components/Cards/graphics/Rank';
 
 const useStyles = makeStyles(() => ({
   maxIconSize: {

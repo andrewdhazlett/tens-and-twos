@@ -2,8 +2,11 @@
 // @ts-nocheck noImplicitAny
 import React, {useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {flipCard} from './animation';
-import {CardBack, Base, Rank, Suit} from './graphics';
+import {flipCard} from './animation/flipCard';
+import CardBack from './graphics/CardBack';
+import Base from './graphics/Base';
+import Rank from './graphics/Rank';
+import Suit from './graphics/Suit';
 
 const useStyles = makeStyles(() => ({
   cardContainer: {
