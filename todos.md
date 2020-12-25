@@ -15,5 +15,4 @@
 ### Tech Debt
 - Migrate `Cards` components to use `typedeck`
 - Clean out existing poker cruft
-- Clean up `eslint` warnings
 - Disable `eslint` rules by regex rather than in-file
