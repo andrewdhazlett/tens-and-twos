@@ -12,7 +12,7 @@ import Layout from '@components/layout';
 import {flipCard} from '@components/Cards/animation/flipCard';
 import {moveTo} from '@components/Cards/animation/moveTo';
 import {muiTheme} from '../../MaterialUI/theme';
-import utilStyles from '../../styles/utils.module.css';
+import utilStyles from '../../styles/utils.module.scss';
 
 const useStyles = makeStyles(theme => ({
   table: {
