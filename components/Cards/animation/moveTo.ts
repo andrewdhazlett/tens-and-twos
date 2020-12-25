@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
 // globals document
-import { gsap, TweenTarget } from 'gsap';
+import {gsap, TweenTarget} from 'gsap';
 
 const duration = 1;
 
@@ -133,7 +133,7 @@ const dealFirstCard = (card, callback) => {
 export const moveTo = (
   animation: string,
   card: string,
-  callback = () => { }
+  callback = () => {}
 ) => {
   if (typeof document === 'undefined') return null;
   switch (animation) {
