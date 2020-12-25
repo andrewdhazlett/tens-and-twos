@@ -6,15 +6,15 @@ import Head from 'next/head';
 import Layout from '../../components/layout';
 import utilStyles from '../../styles/utils.module.scss';
 
-export default function Post({
-  postData,
-}: {
+interface PostProps {
   postData: {
     title: string;
     date: string;
     contentHtml: string;
   };
-}) {
+}
+
+export default function Post({postData}: PostProps) {
   return (
     <Layout>
       <Head>
