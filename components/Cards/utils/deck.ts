@@ -1,134 +1,98 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
-import {CardName, PlayingCard, Suit} from 'typedeck';
-// yuck
-function shuffle(a: Array<unknown>) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+import {CardName, Deck, Suit} from 'typedeck';
 
-type MyRank = 'A' | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 'J' | 'Q' | 'K';
-type MySuit = 'S' | 'H' | 'C' | 'D';
-export interface Card {
-  id?: string;
-  rank: MyRank;
-  suit: MySuit;
+export interface MyCard {
+  id?: `${MyCard.suit}_${MyCard.rank}`;
+  rank: 'A' | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 'J' | 'Q' | 'K';
+  suit: 'S' | 'H' | 'C' | 'D';
   color?: string;
   backColor?: string;
 }
-export type Deck = Array<Card>;
+export type MyDeck = Array<MyCard>;
 
-const getRank = (name: CardName): MyRank => {
+const suits: Suit[] = Object.values(Suit);
+const ranks: Omit<CardName, 'Joker'>[] = Object.values<CardName>(
+  CardName
+).filter((name: CardName) => name !== CardName.Joker && name !== 'Joker');
+
+export const getShuffledDeck = (): MyDeck => {
+  const deck = Deck.Build(suits, ranks);
+  deck.shuffle();
+  return deck.getCards().map(mapToMyCard);
+};
+
+function mapToMyCard(card: ICard): MyCard {
+  const suit: MySuit = getMySuit(card.suit);
+  const rank: MyRank = getRank(card.cardName);
+  return {
+    id: `${suit}_${rank}`,
+    suit,
+    rank: `${rank}`,
+  };
+}
+
+function getRank(name: Omit<CardName, 'Joker'>): MyCard.rank {
   switch (name) {
     case CardName.Ace:
+    case 'Ace':
       return 'A';
+    case CardName.Two:
+    case 'Two':
+      return 2;
+    case CardName.Three:
+    case 'Three':
+      return 3;
+    case CardName.Four:
+    case 'Four':
+      return 4;
+    case CardName.Five:
+    case 'Five':
+      return 5;
+    case CardName.Six:
+    case 'Six':
+      return 6;
+    case CardName.Seven:
+    case 'Seven':
+      return 7;
+    case CardName.Eight:
+    case 'Eight':
+      return 8;
+    case CardName.Nine:
+    case 'Nine':
+      return 9;
+    case CardName.Ten:
+    case 'Ten':
+      return 10;
     case CardName.Jack:
+    case 'Jack':
       return 'J';
     case CardName.Queen:
+    case 'Queen':
       return 'Q';
     case CardName.King:
+    case 'King':
       return 'K';
     default:
-      return name + 1;
+      throw new Error(`CardName: ${name}`);
   }
-};
+}
 
-const getName = (rank: MyRank): CardName => {
-  switch (rank) {
-    case 'A':
-      return CardName.Ace;
-    case 2:
-      return CardName.Two;
-    case 3:
-      return CardName.Three;
-    case 4:
-      return CardName.Four;
-    case 5:
-      return CardName.Five;
-    case 6:
-      return CardName.Six;
-    case 7:
-      return CardName.Seven;
-    case 8:
-      return CardName.Eight;
-    case 9:
-      return CardName.Nine;
-    case 10:
-      return CardName.Ten;
-    case 'J':
-      return CardName.Jack;
-    case 'Q':
-      return CardName.Queen;
-    case 'K':
-      return CardName.King;
-    default:
-      return never;
-  }
-};
-
-const getSuit = (suit: MySuit): Suit => {
-  switch (suit) {
-    case 'S':
-      return Suit.Spades;
-    case 'H':
-      return Suit.Hearts;
-    case 'C':
-      return Suit.Clubs;
-    case 'D':
-      return Suit.Diamonds;
-    default:
-      return never;
-  }
-};
-
-const getMySuit = (suit: Suit): MySuit => {
+function getMySuit(suit: Suit): MyCard.suit {
   switch (suit) {
     case Suit.Spades:
+    case 'Spades':
       return 'S';
     case Suit.Hearts:
+    case 'Hearts':
       return 'H';
     case Suit.Clubs:
+    case 'Clubs':
       return 'C';
     case Suit.Diamonds:
+    case 'Diamonds':
       return 'D';
     default:
       return never;
   }
-};
-
-const addCard = ({
-  deck,
-  rank,
-  suit,
-}: {
-  deck: Deck;
-  rank: MyRank;
-  suit: MySuit;
-}): Deck => {
-  const card = new PlayingCard(getName(rank), getSuit(never));
-  const suit: MySuit = getMySuit(card.suit);
-  const rank: MyRank = getRank(card.cardName);
-  return [
-    ...deck,
-    {
-      id: `${suit}_${rank}`,
-      suit,
-      rank: `${rank}`,
-    },
-  ];
-};
-
-const suits: MySuit[] = ['S', 'H', 'C', 'D'];
-const ranks: MyRank[] = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
-
-const getOrderedDeck = (): Deck =>
-  suits.reduce(
-    (deck, suit) =>
-      ranks.reduce((deck, rank) => addCard({deck, rank, suit}), deck),
-    []
-  );
-
-export const getShuffledDeck = (): Deck => shuffle(getOrderedDeck());
+}

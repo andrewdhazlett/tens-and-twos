@@ -13,6 +13,7 @@ import {flipCard} from '@components/Cards/animation/flipCard';
 import {moveTo} from '@components/Cards/animation/moveTo';
 import {muiTheme} from '../../MaterialUI/theme';
 import utilStyles from '../../styles/utils.module.scss';
+import { getShuffledDeck } from '@components/Cards/utils/deck';
 
 const useStyles = makeStyles(theme => ({
   table: {
@@ -47,6 +48,9 @@ export default function Game() {
     flipCard('hide', `#${'foo-bar'}-card-back`);
   });
 
+  const deck = getShuffledDeck();
+  const card = deck.pop();
+
   return (
     <React.Fragment>
       <Layout>
@@ -60,14 +64,14 @@ export default function Game() {
             <CssBaseline />
             <div className={classes.table}>
               <CardSingle
-                key="card_0"
+                key={`card_${card?.id}`}
                 id="foo-bar"
                 card={{
-                  rank: 'A',
-                  suit: 'S',
-                  backColor: '#1A1919',
+                  rank: card?.rank,
+                  suit: card?.suit,
+                  backColor: card?.backColor,
                   color:
-                    ('S' as string) === 'D' || ('S' as string) === 'H'
+                    card?.suit === 'D' || card?.suit === 'H'
                       ? '#D33E43'
                       : '#1A1919',
                 }}
