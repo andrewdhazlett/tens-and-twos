@@ -1,22 +1,22 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
-import React, {useEffect} from 'react';
-import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import {muiTheme} from '../../MaterialUI/theme';
-import {makeStyles} from '@material-ui/core/styles';
-import IconVideo from '@material-ui/icons/Tv';
 import {
-  CssBaseline,
-  Button,
   AppBar,
+  Button,
+  CssBaseline,
+  ThemeOptions,
   Toolbar,
   Typography,
-  ThemeOptions,
 } from '@material-ui/core';
-import {getShuffledDeck} from './utils/';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import React, {useEffect} from 'react';
 import {CardSingle} from './';
+import IconVideo from '@material-ui/icons/Tv';
 import {flipCard} from './animation/flipCard';
+import {getShuffledDeck} from './utils/';
+import {makeStyles} from '@material-ui/core/styles';
 import {moveTo} from './animation/moveTo';
+import {muiTheme} from '../../MaterialUI/theme';
 
 const useStyles = makeStyles(theme => ({
   cards: {

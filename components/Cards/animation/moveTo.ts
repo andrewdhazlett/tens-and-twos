@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
 // globals document
-import {gsap, TweenTarget} from 'gsap';
+import {TweenTarget, gsap} from 'gsap';
 
 const duration = 1;
 

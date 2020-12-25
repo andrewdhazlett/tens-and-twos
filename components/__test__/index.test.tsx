@@ -1,7 +1,7 @@
+import Home from '../../pages/index';
 import React from 'react';
 // eslint-disable-next-line node/no-unpublished-import
 import {mount} from 'enzyme';
-import Home from '../../pages/index';
 describe('Pages', () => {
   describe('Home', () => {
     it('should render without throwing an error', () => {

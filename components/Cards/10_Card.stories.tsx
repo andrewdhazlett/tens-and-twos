@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
-import React from 'react';
 import {DealSomeCards, Overlay} from '.';
+import React from 'react';
 
 export default {
   title: 'React Playing Cards',

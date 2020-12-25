@@ -1,12 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
 import React, {useEffect} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import {flipCard} from './animation/flipCard';
-import CardBack from './graphics/CardBack';
 import Base from './graphics/Base';
+import CardBack from './graphics/CardBack';
 import Rank from './graphics/Rank';
 import Suit from './graphics/Suit';
+import {flipCard} from './animation/flipCard';
+import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   cardContainer: {

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Layout from '../../components/layout';
+import {GetStaticPaths, GetStaticProps} from 'next';
 import {getAllPostIds, getPostData} from '../../lib/posts';
-import Head from 'next/head';
 import Date from '../../components/date';
+import Head from 'next/head';
+import Layout from '../../components/layout';
 import utilStyles from '../../styles/utils.module.css';
-import {GetStaticProps, GetStaticPaths} from 'next';
 
 export default function Post({
   postData,

@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import {Suit as SuitSymbol} from '../components/Cards/graphics/Suit';
 import {Rank as RankSymbol} from '../components/Cards/graphics/Rank';
+import React from 'react';
+import {Suit as SuitSymbol} from '../components/Cards/graphics/Suit';
+import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   maxIconSize: {

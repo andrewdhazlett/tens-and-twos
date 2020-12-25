@@ -1,18 +1,18 @@
+import * as React from 'react';
 import {CssBaseline, ThemeOptions} from '@material-ui/core';
 import {
   MuiThemeProvider,
   createMuiTheme,
   makeStyles,
 } from '@material-ui/core/styles';
-import * as React from 'react';
-import Head from 'next/head';
-import utilStyles from '../../styles/utils.module.css';
-import {muiTheme} from '../../MaterialUI/theme';
-import Layout from '@components/layout';
-import Date from '@components/date';
 import CardSingle from '@components/Cards/CardSingle';
+import Date from '@components/date';
+import Head from 'next/head';
+import Layout from '@components/layout';
 import {flipCard} from '@components/Cards/animation/flipCard';
 import {moveTo} from '@components/Cards/animation/moveTo';
+import {muiTheme} from '../../MaterialUI/theme';
+import utilStyles from '../../styles/utils.module.css';
 
 const useStyles = makeStyles(theme => ({
   table: {
