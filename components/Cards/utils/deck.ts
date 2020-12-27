@@ -1,9 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck noImplicitAny
-import {CardName, Deck, Suit} from 'typedeck';
+import {CardName, PlayingCard, Suit} from 'typedeck';
 
-export interface MyCard {
-  id?: `${MyCard.suit}_${MyCard.rank}`;
+interface MyCard {
+  id: `${MyCard['suit']}_${MyCard['rank']}`;
   rank: 'A' | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 'J' | 'Q' | 'K';
   suit: 'S' | 'H' | 'C' | 'D';
   color?: string;
@@ -11,28 +9,26 @@ export interface MyCard {
 }
 export type MyDeck = Array<MyCard>;
 
-const suits: Suit[] = Object.values(Suit);
-const ranks: Omit<CardName, 'Joker'>[] = Object.values<CardName>(
-  CardName
-).filter((name: CardName) => name !== CardName.Joker && name !== 'Joker');
+export const suits = Object.values<Suit>(
+  (Suit as unknown) as {[i: string]: Suit}
+);
+export const ranks = Object.values<CardName>(
+  (CardName as unknown) as {[i: string]: CardName}
+).filter(
+  (name: CardName | string) => name !== CardName.Joker && name !== 'Joker'
+);
 
-export const getShuffledDeck = (): MyDeck => {
-  const deck = Deck.Build(suits, ranks);
-  deck.shuffle();
-  return deck.getCards().map(mapToMyCard);
-};
-
-function mapToMyCard(card: ICard): MyCard {
-  const suit: MySuit = getMySuit(card.suit);
-  const rank: MyRank = getRank(card.cardName);
+export function mapToMyCard(card: PlayingCard): MyCard {
+  const suit: MyCard['suit'] = getMySuit(card.suit);
+  const rank: MyCard['rank'] = getRank(card.cardName);
   return {
-    id: `${suit}_${rank}`,
+    id: `${suit}_${rank}` as `${MyCard['suit']}_${MyCard['rank']}`,
     suit,
-    rank: `${rank}`,
+    rank: `${rank}` as MyCard['rank'],
   };
 }
 
-function getRank(name: Omit<CardName, 'Joker'>): MyCard.rank {
+function getRank(name: Omit<CardName, 'Joker'> | string): MyCard['rank'] {
   switch (name) {
     case CardName.Ace:
     case 'Ace':
@@ -78,7 +74,7 @@ function getRank(name: Omit<CardName, 'Joker'>): MyCard.rank {
   }
 }
 
-function getMySuit(suit: Suit): MyCard.suit {
+function getMySuit(suit: Suit | string): MyCard['suit'] {
   switch (suit) {
     case Suit.Spades:
     case 'Spades':
@@ -93,6 +89,6 @@ function getMySuit(suit: Suit): MyCard.suit {
     case 'Diamonds':
       return 'D';
     default:
-      return never;
+      throw new Error(`Suit: ${suit}`);
   }
 }

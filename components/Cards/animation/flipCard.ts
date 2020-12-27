@@ -1,24 +1,22 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck noImplicitAny
-import {gsap} from 'gsap';
+import {Callback, TweenTarget, gsap} from 'gsap';
 
 const duration = 1;
 
-const setToHidden = (card, callback) => {
+const setToHidden = (card: TweenTarget, callback: Callback) => {
   gsap.set(card, {
     rotationY: 90,
     onComplete: callback,
   });
 };
 
-const setToShown = (card, callback) => {
+const setToShown = (card: TweenTarget, callback: Callback) => {
   gsap.set(card, {
     rotationY: 0,
     onComplete: callback,
   });
 };
 
-const hide = (card, callback) => {
+const hide = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     duration: 0.5 * duration,
     rotationY: -90,
@@ -26,7 +24,7 @@ const hide = (card, callback) => {
   });
 };
 
-const show = (card, callback) => {
+const show = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     duration: 0.5 * duration,
     rotationY: 0,
@@ -34,23 +32,22 @@ const show = (card, callback) => {
   });
 };
 
-export const flipCard = (animation, card, callback = () => {}) => {
+export const flipCard = (
+  animation: string,
+  card: TweenTarget,
+  callback = () => {}
+) => {
   if (typeof document === 'undefined') return null;
   switch (animation) {
     case 'setToShown':
       return setToShown(card, callback);
-
     case 'setToHidden':
       return setToHidden(card, callback);
-
     case 'hide':
       return hide(card, callback);
-
     case 'show':
       return show(card, callback);
-
-    default: {
+    default:
       return null;
-    }
   }
 };

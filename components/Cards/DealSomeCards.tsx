@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck noImplicitAny
 import {
   AppBar,
   Button,
@@ -8,11 +6,12 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import {Card, getShuffledDeck} from './utils/';
+import {Deck, PlayingCard} from 'typedeck';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import React, {useEffect} from 'react';
-import {CardSingle} from './';
+import {mapToMyCard, ranks, suits} from './utils/deck';
+import CardSingle from './CardSingle';
 import IconDeal from '@material-ui/icons/ViewColumn';
+import React from 'react';
 import {flipCard} from './animation/flipCard';
 import {makeStyles} from '@material-ui/core/styles';
 import {moveTo} from './animation/moveTo';
@@ -34,8 +33,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function DealSomeCards() {
   const classes = useStyles();
-  const [shoe, setShoe] = React.useState<Card[]>(getShuffledDeck());
-  const [inPlay, setInPlay] = React.useState<Card[]>([]);
+  const deck = Deck.Build(suits, ranks);
+  deck.shuffle();
+  const [shoe, setShoe] = React.useState<PlayingCard[]>(
+    deck.getCards() as PlayingCard[]
+  );
+  const [inPlay, setInPlay] = React.useState<PlayingCard[]>([]);
   const [nextAction, setNextAction] = React.useState({
     key: 'dealHand',
     value: 'Deal Player Hand',
@@ -44,23 +47,23 @@ export default function DealSomeCards() {
 
   const initHandCards = () => {
     setTimeout(() => {
-      moveTo('initCard', `#${inPlay[0].id}`);
-      moveTo('dealFirst', `#${inPlay[0].id}`);
-      flipCard('setToHidden', `#${inPlay[0].id}-card-face`);
+      moveTo('initCard', `#${mapToMyCard(inPlay[0]).id}`);
+      moveTo('dealFirst', `#${mapToMyCard(inPlay[0]).id}`);
+      flipCard('setToHidden', `#${mapToMyCard(inPlay[0]).id}-card-face`);
       setTimeout(() => {
-        flipCard('show', `#${inPlay[0].id}-card-face`);
+        flipCard('show', `#${mapToMyCard(inPlay[0]).id}-card-face`);
       }, 500);
-      flipCard('hide', `#${inPlay[0].id}-card-back`);
+      flipCard('hide', `#${mapToMyCard(inPlay[0]).id}-card-back`);
 
       setTimeout(() => {
-        moveTo('initCard', `#${inPlay[1].id}`);
-        moveTo('dealSecond', `#${inPlay[1].id}`, () =>
+        moveTo('initCard', `#${mapToMyCard(inPlay[1]).id}`);
+        moveTo('dealSecond', `#${mapToMyCard(inPlay[1]).id}`, () =>
           setActionDisabled(false)
         );
-        flipCard('setToHidden', `#${inPlay[1].id}-card-face`);
-        flipCard('hide', `#${inPlay[1].id}-card-back`);
+        flipCard('setToHidden', `#${mapToMyCard(inPlay[1]).id}-card-face`);
+        flipCard('hide', `#${mapToMyCard(inPlay[1]).id}-card-back`);
         setTimeout(() => {
-          flipCard('show', `#${inPlay[1].id}-card-face`);
+          flipCard('show', `#${mapToMyCard(inPlay[1]).id}-card-face`);
         }, 500);
       }, 750);
     }, 100);
@@ -68,30 +71,30 @@ export default function DealSomeCards() {
 
   const initFlop = () => {
     setTimeout(() => {
-      moveTo('initCard', `#${inPlay[2].id}`);
-      moveTo('dealFlopFirst', `#${inPlay[2].id}`);
-      flipCard('setToHidden', `#${inPlay[2].id}-card-face`);
-      flipCard('hide', `#${inPlay[2].id}-card-back`);
+      moveTo('initCard', `#${mapToMyCard(inPlay[2]).id}`);
+      moveTo('dealFlopFirst', `#${mapToMyCard(inPlay[2]).id}`);
+      flipCard('setToHidden', `#${mapToMyCard(inPlay[2]).id}-card-face`);
+      flipCard('hide', `#${mapToMyCard(inPlay[2]).id}-card-back`);
       setTimeout(() => {
-        flipCard('show', `#${inPlay[2].id}-card-face`);
+        flipCard('show', `#${mapToMyCard(inPlay[2]).id}-card-face`);
       }, 500);
       setTimeout(() => {
-        moveTo('initCard', `#${inPlay[3].id}`);
-        moveTo('dealFlopSecond', `#${inPlay[3].id}`);
-        flipCard('setToHidden', `#${inPlay[3].id}-card-face`);
-        flipCard('hide', `#${inPlay[3].id}-card-back`);
+        moveTo('initCard', `#${mapToMyCard(inPlay[3]).id}`);
+        moveTo('dealFlopSecond', `#${mapToMyCard(inPlay[3]).id}`);
+        flipCard('setToHidden', `#${mapToMyCard(inPlay[3]).id}-card-face`);
+        flipCard('hide', `#${mapToMyCard(inPlay[3]).id}-card-back`);
         setTimeout(() => {
-          flipCard('show', `#${inPlay[3].id}-card-face`);
+          flipCard('show', `#${mapToMyCard(inPlay[3]).id}-card-face`);
         }, 500);
         setTimeout(() => {
-          moveTo('initCard', `#${inPlay[4].id}`);
-          moveTo('dealFlopThird', `#${inPlay[4].id}`, () =>
+          moveTo('initCard', `#${mapToMyCard(inPlay[4]).id}`);
+          moveTo('dealFlopThird', `#${mapToMyCard(inPlay[4]).id}`, () =>
             setActionDisabled(false)
           );
-          flipCard('setToHidden', `#${inPlay[4].id}-card-face`);
-          flipCard('hide', `#${inPlay[4].id}-card-back`);
+          flipCard('setToHidden', `#${mapToMyCard(inPlay[4]).id}-card-face`);
+          flipCard('hide', `#${mapToMyCard(inPlay[4]).id}-card-back`);
           setTimeout(() => {
-            flipCard('show', `#${inPlay[4].id}-card-face`);
+            flipCard('show', `#${mapToMyCard(inPlay[4]).id}-card-face`);
           }, 500);
         }, 750);
       }, 750);
@@ -100,31 +103,33 @@ export default function DealSomeCards() {
 
   const initRivers = () => {
     setTimeout(() => {
-      moveTo('initCard', `#${inPlay[5].id}`);
-      moveTo('dealRiverFirst', `#${inPlay[5].id}`);
-      flipCard('setToHidden', `#${inPlay[5].id}-card-face`);
-      flipCard('hide', `#${inPlay[5].id}-card-back`);
-      flipCard('show', `#${inPlay[5].id}-card-face`);
+      moveTo('initCard', `#${mapToMyCard(inPlay[5]).id}`);
+      moveTo('dealRiverFirst', `#${mapToMyCard(inPlay[5]).id}`);
+      flipCard('setToHidden', `#${mapToMyCard(inPlay[5]).id}-card-face`);
+      flipCard('hide', `#${mapToMyCard(inPlay[5]).id}-card-back`);
+      flipCard('show', `#${mapToMyCard(inPlay[5]).id}-card-face`);
       setTimeout(() => {
-        moveTo('initCard', `#${inPlay[6].id}`);
-        moveTo('dealRiverSecond', `#${inPlay[6].id}`, () =>
+        moveTo('initCard', `#${mapToMyCard(inPlay[6]).id}`);
+        moveTo('dealRiverSecond', `#${mapToMyCard(inPlay[6]).id}`, () =>
           setActionDisabled(false)
         );
-        flipCard('setToHidden', `#${inPlay[6].id}-card-face`);
-        flipCard('hide', `#${inPlay[6].id}-card-back`);
+        flipCard('setToHidden', `#${mapToMyCard(inPlay[6]).id}-card-face`);
+        flipCard('hide', `#${mapToMyCard(inPlay[6]).id}-card-back`);
         setTimeout(() => {
-          flipCard('show', `#${inPlay[6].id}-card-face`);
+          flipCard('show', `#${mapToMyCard(inPlay[6]).id}-card-face`);
         }, 500);
       }, 750);
     }, 100);
   };
 
-  const muckCard = (card: Card, i: number) => {
-    flipCard('hide', `#${card.id}-card-face`);
+  const muckCard = (card: PlayingCard, i: number) => {
+    flipCard('hide', `#${mapToMyCard(card).id}-card-face`);
     setTimeout(() => {
-      moveTo('muckCard', `#${card.id}`, () => setActionDisabled(false));
+      moveTo('muckCard', `#${mapToMyCard(card).id}`, () =>
+        setActionDisabled(false)
+      );
       setTimeout(() => {
-        flipCard('show', `#${card.id}-card-back`);
+        flipCard('show', `#${mapToMyCard(card).id}-card-back`);
       }, 400);
     }, 100 * i);
   };
@@ -134,12 +139,6 @@ export default function DealSomeCards() {
       muckCard(inPlay[i], i);
     }
   };
-
-  useEffect(() => {
-    if (!shoe) {
-      setShoe(getShuffledDeck());
-    }
-  });
 
   return (
     <React.Fragment>
@@ -162,15 +161,10 @@ export default function DealSomeCards() {
                 e.preventDefault();
                 if (nextAction.key === 'dealHand') {
                   const newInPlay = inPlay;
-                  newInPlay.push(
-                    shoe?.pop(),
-                    shoe?.pop(),
-                    shoe?.pop(),
-                    shoe?.pop(),
-                    shoe?.pop(),
-                    shoe?.pop(),
-                    shoe?.pop()
-                  );
+                  const newerInPlay: PlayingCard[] = shoe.slice(0, 7);
+                  const newShoe: PlayingCard[] = shoe.slice(7);
+                  setShoe(() => newShoe);
+                  newInPlay.push(...newerInPlay);
                   setInPlay(newInPlay);
                   setNextAction({key: 'initFlop', value: 'Deal Flop'});
                   initHandCards();
@@ -199,23 +193,16 @@ export default function DealSomeCards() {
         </AppBar>
 
         <div className={classes.table}>
-          {inPlay.map((item, i) => {
-            return (
-              <CardSingle
-                key={`card_${i}`}
-                id={item.id}
-                card={{
-                  suit: item.suit,
-                  rank: item.rank,
-                  backColor: '#1A1919',
-                  color:
-                    item.suit === 'D' || item.suit === 'H'
-                      ? '#D33E43'
-                      : '#1A1919',
-                }}
-              />
-            );
-          })}
+          {inPlay.map(
+            (item: PlayingCard, i) =>
+              item && (
+                <CardSingle
+                  key={`card_${i}`}
+                  id={mapToMyCard(item).id}
+                  card={item}
+                />
+              )
+          )}
         </div>
       </MuiThemeProvider>
     </React.Fragment>

@@ -1,11 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck noImplicitAny
 // globals document
-import {TweenTarget, gsap} from 'gsap';
+import {Callback, TweenTarget, gsap} from 'gsap';
 
 const duration = 1;
 
-const initCard = (card: TweenTarget, callback) => {
+const initCard = (card: TweenTarget, callback: Callback) => {
   gsap.set(card, {
     opacity: 1,
     scale: 0.25,
@@ -16,7 +14,7 @@ const initCard = (card: TweenTarget, callback) => {
   });
 };
 
-const muckCard = (card, callback) => {
+const muckCard = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     duration: 1 * duration,
     scale: 0.25,
@@ -27,7 +25,7 @@ const muckCard = (card, callback) => {
   });
 };
 
-const dealRiverFirst = (card, callback) => {
+const dealRiverFirst = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     rotation: 0,
     duration: 1 * duration,
@@ -38,7 +36,7 @@ const dealRiverFirst = (card, callback) => {
   });
 };
 
-const dealRiverSecond = (card, callback) => {
+const dealRiverSecond = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     rotation: 0,
     duration: 1 * duration,
@@ -49,7 +47,7 @@ const dealRiverSecond = (card, callback) => {
   });
 };
 
-const dealFlopThird = (card, callback) => {
+const dealFlopThird = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     rotation: 0,
     duration: 1 * duration,
@@ -60,7 +58,7 @@ const dealFlopThird = (card, callback) => {
   });
 };
 
-const dealFlopSecond = (card, callback) => {
+const dealFlopSecond = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     rotation: 0,
     duration: 1 * duration,
@@ -71,7 +69,7 @@ const dealFlopSecond = (card, callback) => {
   });
 };
 
-const dealFlopFirst = (card, callback) => {
+const dealFlopFirst = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     rotation: 0,
     duration: 1 * duration,
@@ -82,14 +80,14 @@ const dealFlopFirst = (card, callback) => {
   });
 };
 
-const makeVisible = (card, callback) => {
+const makeVisible = (card: TweenTarget, callback: Callback) => {
   gsap.set(card, {
     opacity: 1,
     onComplete: callback,
   });
 };
 
-const dealFirst = (card, callback) => {
+const dealFirst = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     rotation: 0,
     duration: 1 * duration,
@@ -100,7 +98,7 @@ const dealFirst = (card, callback) => {
   });
 };
 
-const dealSecond = (card, callback) => {
+const dealSecond = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     rotation: 0,
     duration: 1 * duration,
@@ -111,7 +109,7 @@ const dealSecond = (card, callback) => {
   });
 };
 
-const placeInDeck = (card, callback) => {
+const placeInDeck = (card: TweenTarget, callback: Callback) => {
   gsap.set(card, {
     scale: 0.25,
     x: -75,
@@ -120,7 +118,7 @@ const placeInDeck = (card, callback) => {
   });
 };
 
-const dealFirstCard = (card, callback) => {
+const dealFirstCard = (card: TweenTarget, callback: Callback) => {
   gsap.to(card, {
     duration: 0.5 * duration,
     x: 275,
