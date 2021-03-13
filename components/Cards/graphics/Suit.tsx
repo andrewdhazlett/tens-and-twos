@@ -12,7 +12,7 @@ const makeGraphic = (props: unknown, svg: path) => {
   );
 };
 
-export default function Suit(props) {
+export function Suit(props) {
   let c = '#000000';
   let s = 'S';
   const {card} = props;

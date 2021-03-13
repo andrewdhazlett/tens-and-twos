@@ -1,4 +1,4 @@
-import Home from '../../pages/index';
+import {Home} from './index';
 import React from 'react';
 // eslint-disable-next-line node/no-unpublished-import
 import {mount} from 'enzyme';

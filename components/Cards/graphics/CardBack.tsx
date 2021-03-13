@@ -12,7 +12,7 @@ const makeGraphic = (props: unknown, svg: path) => {
   );
 };
 
-export default function CardBack(props) {
+export function CardBack(props) {
   let c = '#212121';
   const {color} = props;
   if (color) c = color;

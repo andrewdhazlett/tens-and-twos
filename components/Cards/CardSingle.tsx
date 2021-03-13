@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import Base from './graphics/Base';
-import CardBack from './graphics/CardBack';
+import {Base} from './graphics/Base';
+import {CardBack} from './graphics/CardBack';
 import {PlayingCard} from 'typedeck';
-import Rank from './graphics/Rank';
-import Suit from './graphics/Suit';
+import {Rank} from './graphics/Rank';
+import {Suit} from './graphics/Suit';
 import {flipCard} from './animation/flipCard';
 import {makeStyles} from '@material-ui/core/styles';
 import {mapToMyCard} from './utils/deck';
@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function CardSingle(props: {
+export function CardSingle(props: {
   initialState?: 'face-down' | 'turn-face-up' | 'show_face' | 'finished';
   id: string;
   card: PlayingCard;

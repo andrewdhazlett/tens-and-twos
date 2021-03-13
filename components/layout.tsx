@@ -6,7 +6,7 @@ import utilStyles from '../styles/utils.module.scss';
 const name = '[Your Name]';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({
+export function Layout({
   children,
   home,
 }: {

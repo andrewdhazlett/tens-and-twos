@@ -12,7 +12,7 @@ const makeGraphic = (props: unknown, svg: path) => {
   );
 };
 
-export default function Rank(props) {
+export function Rank(props) {
   let c = '#000000';
   let r = 'A';
   const {card} = props;

@@ -12,7 +12,7 @@ const makeGraphic = (props: unknown, svg: path) => {
   );
 };
 
-export default function Base(props: {color: string; className: string}) {
+export function Base(props: {color: string; className: string}) {
   let c = 'black';
   const {color} = props;
   if (color) c = color;

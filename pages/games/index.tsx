@@ -7,11 +7,11 @@ import {
   makeStyles,
 } from '@material-ui/core/styles';
 import {mapToMyCard, ranks, suits} from '@components/Cards/utils/deck';
-import CardSingle from '@components/Cards/CardSingle';
-import Date from '@components/date';
-import DealSomeCards from '@components/Cards/DealSomeCards';
+import {CardSingle} from '@components/Cards/CardSingle';
+import {Date} from '@components/date';
+import {DealSomeCards} from '@components/Cards/DealSomeCards';
 import Head from 'next/head';
-import Layout from '@components/layout';
+import {Layout} from '@components/layout';
 import {flipCard} from '@components/Cards/animation/flipCard';
 import {moveTo} from '@components/Cards/animation/moveTo';
 import {muiTheme} from '../../MaterialUI/theme';

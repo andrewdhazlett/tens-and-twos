@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Home = () => {
+export const Home = () => {
   return <h1>Welcome to My Next App!</h1>;
 };
 

@@ -10,7 +10,7 @@ import {Deck, PlayingCard} from 'typedeck';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import {mapToMyCard, ranks, suits} from './utils/deck';
 import {Callback} from 'gsap';
-import CardSingle from './CardSingle';
+import {CardSingle} from './CardSingle';
 import IconDeal from '@material-ui/icons/ViewColumn';
 import React from 'react';
 import {flipCard} from './animation/flipCard';
