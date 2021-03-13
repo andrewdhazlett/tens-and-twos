@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Game() {
+export function Game() {
   const classes = useStyles();
 
   const postData = {

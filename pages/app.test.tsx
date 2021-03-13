@@ -19,6 +19,7 @@ describe('App', () => {
         router={router as Router}
       />
     );
-    console.dir({wrap});
+
+    expect(wrap).toBeDefined();
   });
 });
