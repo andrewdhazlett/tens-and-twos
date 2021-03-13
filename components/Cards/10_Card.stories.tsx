@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck noImplicitAny
-import {DealSomeCards, Overlay} from '.';
+import {DealSomeCards} from './DealSomeCards.tsx';
+import {Overlay} from './Overlay.tsx';
 import React from 'react';
 
 export default {

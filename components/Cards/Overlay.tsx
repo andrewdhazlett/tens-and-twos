@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Overlay() {
+export function Overlay() {
   const classes = useStyles();
   const deck = Deck.Build(suits, ranks);
   deck.shuffle();

@@ -12,7 +12,6 @@ import Date from '@components/date';
 import DealSomeCards from '@components/Cards/DealSomeCards';
 import Head from 'next/head';
 import Layout from '@components/layout';
-import Overlay from '@components/Cards/Overlay';
 import {flipCard} from '@components/Cards/animation/flipCard';
 import {moveTo} from '@components/Cards/animation/moveTo';
 import {muiTheme} from '../../MaterialUI/theme';
@@ -68,7 +67,6 @@ export default function Game() {
             theme={createMuiTheme((muiTheme as unknown) as ThemeOptions)}
           >
             <CssBaseline />
-            <Overlay />
             <div className={classes.table}>
               {cards.map((card, index) => (
                 <CardSingle
